@@ -1,4 +1,4 @@
-#titre Application Web de gestion d'une discothèque  
+#Application Web de gestion d'une discothèque  
 
 PHP / Symfony  
 MySql / Doctrine  
