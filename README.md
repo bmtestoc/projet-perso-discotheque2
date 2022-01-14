@@ -5,6 +5,7 @@ PHP / Symfony
 MySql / Doctrine  
 Bootstrap  
 
+Authentification  
 CRUD disques  
 CRUD users  
 
