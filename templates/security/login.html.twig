@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, intial-scale=1, shrink-to-fit=no">
@@ -10,8 +11,7 @@
 		<script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
 		<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css">
 		<title>
-			{% block title %}Welcome!
-			{% endblock %}
+			{% block title %}Log in!{% endblock %}
 		</title>
 		<link
 		rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
@@ -24,29 +24,43 @@
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
 	</head>
-	<header>
-		<ul class="nav justify-content-center">
-			<li class="nav-item">
-				<a class="nav-link active" aria-current="page" href="create">Add a disc</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link active" aria-current="page" href="/home">Back to collection</a>
-			</li>
-		</ul>
-	</header>
-	<body>
-		{% block body %}{% endblock %}
 
-	</body>
-	<footer>
-		<ul class="nav justify-content-center">
-			<li class="nav-item">
-				<a class="nav-link active" aria-current="page" href="user/users">Users</a>
-			</li>
-		</ul>
-		<p class="nav justify-content-center">
-			&copy Copyright
-			{{ 'now'|date('Y', 'Europe/Paris') }}
-		</p>
-	</footer>
-</html>
+{% block body %}
+<form method="post">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <label for="inputUsername">Username</label>
+    <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
+    <label for="inputPassword">Password</label>
+    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+
+    {#
+        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+        See https://symfony.com/doc/current/security/remember_me.html
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" name="_remember_me"> Remember me
+            </label>
+        </div>
+    #}
+
+    <button class="btn btn-lg btn-primary" type="submit">
+        Sign in
+    </button>
+</form>
+<h2 class="h4 mb-3 font-weight-normal">Don't have an account ? Please click <a href="{{ path('user_new') }}">here</a></h2>
+{% endblock %}

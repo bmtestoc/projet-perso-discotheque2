@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, intial-scale=1, shrink-to-fit=no">
@@ -10,8 +11,7 @@
 		<script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
 		<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css">
 		<title>
-			{% block title %}Welcome!
-			{% endblock %}
+			{% block title %}Not allowed{% endblock %}
 		</title>
 		<link
 		rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
@@ -24,29 +24,13 @@
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
 	</head>
-	<header>
+    <header>
 		<ul class="nav justify-content-center">
 			<li class="nav-item">
-				<a class="nav-link active" aria-current="page" href="create">Add a disc</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link active" aria-current="page" href="/home">Back to collection</a>
+				<a class="nav-link active" aria-current="page" href="/">Back to collection</a>
 			</li>
 		</ul>
 	</header>
-	<body>
-		{% block body %}{% endblock %}
-
-	</body>
-	<footer>
-		<ul class="nav justify-content-center">
-			<li class="nav-item">
-				<a class="nav-link active" aria-current="page" href="user/users">Users</a>
-			</li>
-		</ul>
-		<p class="nav justify-content-center">
-			&copy Copyright
-			{{ 'now'|date('Y', 'Europe/Paris') }}
-		</p>
-	</footer>
-</html>
+    {% block body %}
+<h1 class="h3 mb-3 font-weight-normal">You don't have permission to go here</h1>
+    {% endblock %}

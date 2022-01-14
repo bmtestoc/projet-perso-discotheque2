@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, intial-scale=1, shrink-to-fit=no">
@@ -9,10 +10,7 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 		<script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
 		<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css">
-		<title>
-			{% block title %}Welcome!
-			{% endblock %}
-		</title>
+		<title>{% block title %}New User{% endblock %}</title>
 		<link
 		rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
 		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
@@ -24,29 +22,27 @@
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
 	</head>
-	<header>
-		<ul class="nav justify-content-center">
-			<li class="nav-item">
-				<a class="nav-link active" aria-current="page" href="create">Add a disc</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link active" aria-current="page" href="/home">Back to collection</a>
-			</li>
-		</ul>
-	</header>
-	<body>
-		{% block body %}{% endblock %}
 
-	</body>
-	<footer>
-		<ul class="nav justify-content-center">
-			<li class="nav-item">
-				<a class="nav-link active" aria-current="page" href="user/users">Users</a>
-			</li>
-		</ul>
-		<p class="nav justify-content-center">
-			&copy Copyright
-			{{ 'now'|date('Y', 'Europe/Paris') }}
-		</p>
-	</footer>
-</html>
+{% block body %}
+    <h1>Create new User</h1>
+
+{{ form_start(form, {'attr': {'id': 'new_edit_utilisateur'}}) }}
+        <div class="row">
+                <div class="col-12">
+                        {{ form_label(form.username) }}
+                        {{ form_widget(form.username) }}
+                </div>
+                <div class="col-12">
+                        {{ form_label(form.password) }}
+                        {{ form_widget(form.password) }}
+                </div>
+                <div class="col-12">
+                        <label for="verifpass">Password verification</label>
+                        <input type="password" id="verifpass" required>
+                </div>
+        </div>
+        <button class="btn btn-success">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+
+<a href="{{ path('app_login') }}">Go to login page</a>
+{% endblock %}

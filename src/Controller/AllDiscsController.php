@@ -10,7 +10,7 @@ use Doctrine\Persistence\ManagerRegistry as PersistenceManagerRegistry;
 
 class AllDiscsController extends AbstractController
 {
-    #[Route('/', name: 'home')]
+    #[Route('/home', name: 'home')]
     public function showAllDiscs(PersistenceManagerRegistry $doctrine): Response
     {
         $liste = $doctrine->getRepository(Liste::class)
