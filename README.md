@@ -1,6 +1,6 @@
 **Application Web de gestion d'une discothèque**  
 
-Technos :  
+**Technos :**  
 PHP / Symfony  
 MySql / Doctrine  
 Bootstrap  
@@ -8,7 +8,7 @@ Bootstrap
 CRUD disques  
 CRUD users  
 
-Droits :  
+**Droits :**  
 Anonyme : login, création d'un accès  
 User : anonyme + liste des disques  
 Admin : user + liste des users, edition d'un user, suppression d'un user, modification d'un user, ajout d'un disque, edition d'un disque, modification d'un disque, suppression d'un disque
