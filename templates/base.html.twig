@@ -24,7 +24,7 @@
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
 	</head>
-	<header>
+	{#<header>
 		<ul class="nav justify-content-center">
 			<li class="nav-item">
 				<a class="nav-link active" aria-current="page" href="create">Add a disc</a>
@@ -33,15 +33,20 @@
 				<a class="nav-link active" aria-current="page" href="/home">Back to collection</a>
 			</li>
 		</ul>
-	</header>
+	</header>#}
 	<body>
 		{% block body %}{% endblock %}
 
 	</body>
 	<footer>
-		<ul class="nav justify-content-center">
+		{#<ul class="nav justify-content-center">
 			<li class="nav-item">
 				<a class="nav-link active" aria-current="page" href="user/users">Users</a>
+			</li>
+		</ul>#}
+		<ul class="nav justify-content-center">
+			<li class="nav-item">
+				<a class="nav-link active" aria-current="page" href="/home">Back to collection</a>
 			</li>
 		</ul>
 		<p class="nav justify-content-center">

@@ -11,7 +11,7 @@
 <div class="example-wrapper">
     <h1>Add a disc</h1>
 </div>
-<div class="mb-3">
+<div class="mb-3 ms-5">
 {{ form_start(form) }}
         {{ form_label(form.artist) }}
         {{ form_widget(form.artist) }}
@@ -20,7 +20,7 @@
         {{ form_label(form.format) }}
         {{ form_widget(form.format) }}
         {{ form_rest(form) }}
-        <div><button type="submit" class="btn btn-primary">Create</button></div>
+        <div><button type="submit" class="btn btn-primary ms-4 mt-3">Create</button></div>
     {{ form_end(form) }}
 </div>
 {% endblock %}

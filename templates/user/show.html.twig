@@ -3,9 +3,12 @@
 {% block title %}User{% endblock %}
 
 {% block body %}
+<div class="example-wrapper ms-5 mt-3">
     <h1>User</h1>
+</div>
+    
 
-    <table class="table">
+    <table class="table ms-5 mt-3">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -25,10 +28,7 @@
             </tr>
         </tbody>
     </table>
-
-    <a href="{{ path('user_index') }}">back to list</a>
-
-    <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
-
-    {{ include('user/_delete_form.html.twig') }}
+<div class="ms-5 mt-3">
+    <a href="{{ path('user_index') }}">back to index</a>
+</div>
 {% endblock %}
