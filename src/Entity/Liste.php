@@ -4,11 +4,18 @@ namespace App\Entity;
 
 use App\Repository\ListeRepository;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Table(name="Liste")
  * @ORM\Entity(repositoryClass=ListeRepository::class)
- */
+*/
+#[ApiResource(
+    normalizationContext: ['groups' => ['read:collection']],
+    collectionOperations: ['get'],
+    itemOperations: ['get']
+)]
 class Liste
 {
     /**
@@ -21,16 +28,20 @@ class Liste
     /**
      * @ORM\Column(type="text")
      */
+    #[Groups(['read:collection'])]
     private $artist;
 
     /**
      * @ORM\Column(type="text")
      */
+    #[Groups(['read:collection'])]
     private $album;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"read:collection"})
      */
+    #[Groups(['read:collection'])]
     private $format;
 
     public function getId(): ?int
